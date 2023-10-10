@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'To Do App',
       theme: ThemeData(
 
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
       home: const HomeScreen(),

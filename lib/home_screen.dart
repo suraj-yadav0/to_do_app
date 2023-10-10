@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:to_do_app/info_screen.dart';
+import 'package:to_do_app/new_task.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,12 +15,25 @@ class _HomeScreenState extends State<HomeScreen> {
   bool chekvalue = false;
   @override
   Widget build(BuildContext context) {
+     Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.white;
+    }
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
         onPressed: () {},
         icon: const Icon(Icons.menu),
       )),
+
+      // It has too much redundancy , I should just make a widget for tasks, well thats for later time
       body: SingleChildScrollView(
         child: Column(children: [
           const Row(
@@ -56,7 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Center(
                 child: IconButton(
               icon: const Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewTaskScreen()));
+              },
             )),
           ),
           const SizedBox(height: 10,),
@@ -100,7 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Checkbox(
                         
-                        checkColor: Colors.white,
+                        checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
                         value: chekvalue,
                         onChanged: (bool? value) {
                           setState(() {
@@ -124,7 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                     children: [
                       Checkbox(
-                        checkColor: Colors.white,
+                   checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
                         value: chekvalue,
                         onChanged: (bool? value) {
                           setState(() {
@@ -148,7 +166,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                     children: [
                       Checkbox(
-                        checkColor: Colors.white,
+                      checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
                         value: chekvalue,
                         onChanged: (bool? value) {
                           setState(() {
@@ -172,7 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                     children: [
                       Checkbox(
-                        checkColor: Colors.white,
+                    checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
                         value: chekvalue,
                         onChanged: (bool? value) {
                           setState(() {
@@ -193,6 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
+                  
                 ]),
               ),
             ),
@@ -227,7 +248,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Checkbox(
                             
-                            checkColor: Colors.white,
+                            checkColor: Colors.black,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
                             value: chekvalue,
                             onChanged: (bool? value) {
                               setState(() {
@@ -251,7 +273,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                         children: [
                           Checkbox(
-                            checkColor: Colors.white,
+                         checkColor: Colors.black,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
                             value: chekvalue,
                             onChanged: (bool? value) {
                               setState(() {
@@ -275,7 +298,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                         children: [
                           Checkbox(
-                            checkColor: Colors.white,
+                            checkColor: Colors.black,
+                           fillColor: MaterialStateProperty.resolveWith(getColor),
                             value: chekvalue,
                             onChanged: (bool? value) {
                               setState(() {
@@ -299,7 +323,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                         children: [
                           Checkbox(
-                            checkColor: Colors.white,
+                         checkColor: Colors.black,
+                            fillColor: MaterialStateProperty.resolveWith(getColor),
                             value: chekvalue,
                             onChanged: (bool? value) {
                               setState(() {
@@ -323,6 +348,138 @@ class _HomeScreenState extends State<HomeScreen> {
                     ]),
                   ),
                 ),
+const SizedBox(width: 15,),
+                 SizedBox(
+              height: 375,
+              width: 225,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.amber,
+                elevation: 10,
+                child: Column(children: [
+                const  Padding(
+                    padding:  EdgeInsets.all(15.0),
+                    child:  Text(
+                      "Life Goals",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Divider(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        
+                        checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: chekvalue,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            chekvalue = value!;
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        "Get Dream Job",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                      Row(
+                    children: [
+                      Checkbox(
+                   checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: chekvalue,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            chekvalue = value!;
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        "Travel World",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                      Row(
+                    children: [
+                      Checkbox(
+                      checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: chekvalue,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            chekvalue = value!;
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        "Give Back To Family",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                      Row(
+                    children: [
+                      Checkbox(
+                    checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith(getColor),
+                        value: chekvalue,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            chekvalue = value!;
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        "Get Married",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                  
+                ]),
+              ),
+            ),
               ],
             ),
           )
