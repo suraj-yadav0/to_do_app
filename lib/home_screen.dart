@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: const Icon(Icons.menu),
       )),
 
-      // It has too much redundancy , I should just make a widget for tasks, well thats for later time
+      // It has too much redundancy , I should just make a widget for tasks, well thats for later time,
       body: SingleChildScrollView(
         child: Column(children: [
           const Row(
