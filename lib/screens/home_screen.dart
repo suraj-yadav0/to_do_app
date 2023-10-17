@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:to_do_app/info_screen.dart';
-import 'package:to_do_app/new_task.dart';
+import 'package:to_do_app/screens/info_screen.dart';
+import 'package:to_do_app/screens/new_task.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -499,7 +499,7 @@ const SizedBox(width: 15,),
             },
           ),
         const  Text(
-            'Copyright © Your Company 2023',
+            'Completed',
             style: TextStyle(fontSize: 14.0),
           ),
           IconButton(
